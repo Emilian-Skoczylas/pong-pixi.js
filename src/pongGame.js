@@ -3,7 +3,7 @@ const  { Application, Text, TextStyle, Graphics } = PIXI;
 //import { initDevtools } from "@pixi/devtools";
 import { Paddle } from "./paddle.js";
 import { Ball } from "./ball.js";
-import { Sfx } from './Sfx.js';
+import { Sfx } from './sfx.js';
 
 export class PongGame {
   constructor() {
