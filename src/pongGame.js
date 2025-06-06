@@ -11,6 +11,7 @@ export class PongGame {
     this.keys = {};
     this.leftScore = 0;
     this.rightScore = 0;
+    this.winningScore = 11;
 
     this.init();
   }
@@ -70,6 +71,20 @@ export class PongGame {
     this.leftScoreText.y = this.rightScoreText.y = 20;
 
     this.app.stage.addChild(this.leftScoreText, this.rightScoreText);
+
+
+    this.winnerText = new Text({
+        text: '',
+        style: textStyle,
+        fill: 0xff0000,
+        align: 'center'
+    });
+
+    this.winnerText.anchor.set(0.5);
+    this.winnerText.x = this.app.canvas.width / 2;
+    this.winnerText.y = this.app.canvas.height / 2;
+
+    this.app.stage.addChild(this.winnerText);
   }
 
   setupInput() {
@@ -79,6 +94,10 @@ export class PongGame {
         this.leftScore = 0;
         this.rightScore = 0;
         this.updateScore();
+
+        this.winnerText.text = '';
+        this.ball.reset();
+        this.app.ticker.start();
       }
     });
 
@@ -156,5 +175,20 @@ export class PongGame {
     updateScore() {
         this.leftScoreText.text = this.leftScore.toString();
         this.rightScoreText.text = this.rightScore.toString();
+
+        if (this.leftScore >= this.winningScore || this.rightScore >= this.winningScore)
+            this.endGame();
+  }
+
+  endGame() {
+    console.log('Game Over!');
+    this.app.ticker.stop();
+
+    if (this.leftScore >= this.winningScore){
+        this.winnerText.text = 'Player 1 WINS!';
+    }
+    else if (this.rightScore >= this.winningScore){
+        this.winnerText.text = 'Player 2 WINS!';
+    }
   }
 }
