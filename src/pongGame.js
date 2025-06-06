@@ -2,7 +2,6 @@ import { Application, Text, TextStyle, Graphics } from "pixi.js";
 import { initDevtools } from "@pixi/devtools";
 import { Paddle } from "./paddle.js";
 import { Ball } from "./ball.js";
-import { Howl } from "howler";
 import { Sfx } from './Sfx.js';
 
 export class PongGame {
@@ -52,7 +51,7 @@ export class PongGame {
     this.app.stage.addChild(this.leftPaddle, this.rightPaddle, this.ball);
 
     const textStyle = new TextStyle({
-      fontFamily: "Arial",
+      fontFamily: "Orbitron",
       fontSize: 124,
       fill: 0xffffff,
     });
@@ -91,10 +90,14 @@ export class PongGame {
   update() {
     const height = this.app.canvas.height;
 
-    if (this.keys["w"]) this.leftPaddle.move(-5, height);
-    if (this.keys["s"]) this.leftPaddle.move(5, height);
-    if (this.keys["ArrowUp"]) this.rightPaddle.move(-5, height);
-    if (this.keys["ArrowDown"]) this.rightPaddle.move(5, height);
+    if (this.keys["w"])
+        this.leftPaddle.move(-5, height);
+    if (this.keys["s"])
+        this.leftPaddle.move(5, height);
+    if (this.keys["ArrowUp"])
+        this.rightPaddle.move(-5, height);
+    if (this.keys["ArrowDown"])
+        this.rightPaddle.move(5, height);
 
     this.ball.update();
     this.ball.bounceVertical(height);
@@ -141,7 +144,8 @@ export class PongGame {
       this.updateScore();
       this.sfx.play('score');
       this.ball.reset();
-    } else if (this.ball.x > this.app.canvas.width) {
+    } 
+    else if (this.ball.x > this.app.canvas.width) {
       this.leftScore++;
       this.updateScore();
       this.sfx.play('score');

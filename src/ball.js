@@ -1,5 +1,4 @@
 import { Graphics } from "pixi.js";
-import { Howl } from "howler";
 
 export class Ball extends Graphics {
   constructor(sfx) {
