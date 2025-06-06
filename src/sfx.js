@@ -1,9 +1,9 @@
 export class Sfx {
   constructor() {
     this.sounds = {
-      wall: new Howl({ src: ['/audio/hit_wall.mp3'] }),
-      paddle: new Howl({ src: ['/audio/hit_paddle.mp3'] }),
-      score: new Howl({ src: ['/audio/score.mp3'] }),
+      wall: new Howl({ src: ['./audio/hit_wall.mp3'] }),
+      paddle: new Howl({ src: ['./audio/hit_paddle.mp3'] }),
+      score: new Howl({ src: ['./audio/score.mp3'] }),
     };
   }
 
