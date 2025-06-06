@@ -1,0 +1,27 @@
+{
+  "name": "pong-pixi",
+  "version": "1.0.0",
+  "description": "A simple game based on the original 1972 Pong game, created in Pixi.js.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Emilian-Skoczylas/pong-pixi.js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Emilian-Skoczylas/pong-pixi.js/issues"
+  },
+  "homepage": "https://github.com/Emilian-Skoczylas/pong-pixi.js#readme",
+  "dependencies": {
+    "pixi.js": "^8.10.1"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
+  }
+}
