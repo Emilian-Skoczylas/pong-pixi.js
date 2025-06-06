@@ -1,6 +1,4 @@
-import { Graphics } from "pixi.js";
-
-export class Paddle extends Graphics {
+export class Paddle extends PIXI.Graphics {
   constructor(x) {
     super();
     this.rect(0, 0, 20, 150);

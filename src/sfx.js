@@ -1,5 +1,3 @@
-import { Howl } from 'howler';
-
 export class Sfx {
   constructor() {
     this.sounds = {

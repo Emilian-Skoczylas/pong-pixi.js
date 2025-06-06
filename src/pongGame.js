@@ -1,5 +1,6 @@
-import { Application, Text, TextStyle, Graphics } from "pixi.js";
-import { initDevtools } from "@pixi/devtools";
+const  { Application, Text, TextStyle, Graphics } = PIXI;
+
+//import { initDevtools } from "@pixi/devtools";
 import { Paddle } from "./paddle.js";
 import { Ball } from "./ball.js";
 import { Sfx } from './Sfx.js';
@@ -25,7 +26,7 @@ export class PongGame {
     this.app.canvas.style.position = "absolute";
     document.body.appendChild(this.app.canvas);
     
-    initDevtools(this.app);
+    //initDevtools(this.app);
     this.createEntities();
     this.setupInput();
     this.app.ticker.add(() => this.update());

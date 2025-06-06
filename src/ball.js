@@ -1,6 +1,4 @@
-import { Graphics } from "pixi.js";
-
-export class Ball extends Graphics {
+export class Ball extends PIXI.Graphics {
   constructor(sfx) {
     super();
     this.sfx = sfx;
