@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Emilian-Skoczylas/pong-pixi.js#readme",
   "dependencies": {
+    "howler": "^2.2.4",
     "pixi.js": "^8.10.1"
   },
   "devDependencies": {

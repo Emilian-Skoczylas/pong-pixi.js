@@ -2,10 +2,13 @@ import { Application, Text, TextStyle, Graphics } from "pixi.js";
 import { initDevtools } from "@pixi/devtools";
 import { Paddle } from "./paddle.js";
 import { Ball } from "./ball.js";
+import { Howl } from "howler";
+import { Sfx } from './Sfx.js';
 
 export class PongGame {
   constructor() {
     this.app = new Application();
+    this.sfx = new Sfx();
     this.keys = {};
     this.leftScore = 0;
     this.rightScore = 0;
@@ -44,7 +47,7 @@ export class PongGame {
 
     this.leftPaddle = new Paddle(50);
     this.rightPaddle = new Paddle(window.innerWidth - 70);
-    this.ball = new Ball();
+    this.ball = new Ball(this.sfx);
 
     this.app.stage.addChild(this.leftPaddle, this.rightPaddle, this.ball);
 
@@ -111,6 +114,8 @@ export class PongGame {
         if (Math.abs(this.ball.vy) < minVy) {
             this.ball.vy = minVy * Math.sign(this.ball.vy || 1); // jakby było 0, to daj 1
         }
+
+        this.sfx.play('paddle');
     }
 
     if (this.ball.checkCollision(this.rightPaddle)) {
@@ -128,23 +133,24 @@ export class PongGame {
         if (Math.abs(this.ball.vy) < minVy) {
             this.ball.vy = minVy * Math.sign(this.ball.vy || 1); // jakby było 0, to daj 1
         }
+        this.sfx.play('paddle');
     }
-
-
 
     if (this.ball.x < 0) {
       this.rightScore++;
       this.updateScore();
+      this.sfx.play('score');
       this.ball.reset();
     } else if (this.ball.x > this.app.canvas.width) {
       this.leftScore++;
       this.updateScore();
+      this.sfx.play('score');
       this.ball.reset();
     }
   }
 
-  updateScore() {
-    this.leftScoreText.text = this.leftScore.toString();
-    this.rightScoreText.text = this.rightScore.toString();
+    updateScore() {
+        this.leftScoreText.text = this.leftScore.toString();
+        this.rightScoreText.text = this.rightScore.toString();
   }
 }

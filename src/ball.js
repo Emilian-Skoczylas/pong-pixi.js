@@ -1,8 +1,10 @@
 import { Graphics } from "pixi.js";
+import { Howl } from "howler";
 
 export class Ball extends Graphics {
-  constructor() {
+  constructor(sfx) {
     super();
+    this.sfx = sfx;
     this.size = 30;
     this.vx = 4;
     this.vy = 4;
@@ -28,6 +30,8 @@ export class Ball extends Graphics {
   bounceVertical(limit) {
     if (this.y - this.size / 2 < 0 || this.y + this.size / 2 > limit) {
       this.vy *= -1;
+
+      this.sfx.play('wall');
     }
   }
 
